@@ -1,0 +1,6 @@
+.searchResult{
+    height: calc(100% - 157px);
+     
+    flex: 1;
+    display: flex;
+}

@@ -1,0 +1,46 @@
+.searchInput{
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+
+.defaultButton{
+    color: white;
+    background-color: #3275ff;
+
+    border: 0;
+    border-radius: 25px;
+    
+    cursor: pointer;
+    transition: .3s ease-in-out;
+
+    padding: .6rem 1rem;
+}
+
+.defaultButton:hover{
+    background-color: #1757d8;
+}
+
+
+.searchInput input{
+    border: 0;
+    outline: none;
+    border-radius: 25px;
+    box-shadow: 1px 1px 7px 2px rgb(0,0,0,10%);
+
+    flex: 1;
+    padding: .5rem 1rem;
+}
+
+
+
+/* dark mode */
+.dark input{
+    background-color: #333;
+    color: white;
+}
+
+.dark input::placeholder {
+    color: lightgray;
+}
