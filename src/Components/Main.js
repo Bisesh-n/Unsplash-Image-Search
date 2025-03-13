@@ -9,17 +9,21 @@ import '../CSS/searchInput.css'
 import ResultDisplay from './ResultDisplay'
 
 // Image import
-import placeholder from '../images/cc.png'
+import placeholder from '../images/placeholder.png'
+import loading from '../images/loading.png'
 
 const Main = () => {
     const [img, setImg] = useState("");
     const [res, setRes] = useState([]);
 
     // To set limit on initial display
-    const [limit, setLimit] = useState(4)
+    const [limit, setLimit] = useState(6)
 
     // Dark Mode State
     const [darkMode, setDarkMode] = useState(false);
+
+    const [isLoadingMore, setIsLoadingMore] = useState(false);
+    const [isLoadingImages, setIsLoadingImages] = useState(false);
 
     // Toggle Dark Mode
     const toggleDarkMode = () => {
@@ -31,10 +35,10 @@ const Main = () => {
         try {
             let allResults = [];
             let page = 1;
-            let totalPages = 5; // Adjust this to fetch more pages
+            let totalPages = 3; // Adjust this to fetch more pages
 
             while (page <= totalPages) {
-                const response = await fetch(`https://api.unsplash.com/search/photos?page=${page}&query=${img}&client_id=${process.env.REACT_APP_ACCESS_KEY}&per_page=30`);
+                const response = await fetch(`https://api.unsplash.com/search/photos?page=${page}&query=${img}&client_id=${process.env.REACT_APP_ACCESS_KEY}&per_page=50`);
                 
                 if (!response.ok) {
                     throw new Error(`HTTP error! Status: ${response.status}`);
@@ -55,8 +59,17 @@ const Main = () => {
 
     // Function to fetch results and empty the search field
     const onSubmit = () => {
+        if (!img.trim()) return;
+
+        setRes([]);   // Clear previous results
+        setLimit(6);
+
         fetchRequest();
         setImg("");
+
+        setIsLoadingImages(true); // Start loading state
+
+    fetchRequest().finally(() => setIsLoadingImages(false)); // Stop loading after fetching
     };
 
     // To prevent reloding
@@ -74,8 +87,8 @@ const Main = () => {
                 <h2 className='m-0'><b>Unsplash Image Search App</b></h2>
 
                 {/* Dark Mode Toggle Button */}
-                <button className="toggle-button" onClick={toggleDarkMode}>
-                    {darkMode ? "Light Mode ☀️" : "Dark Mode 🌙"}
+                <button className="toggle-button" title={darkMode ? "switch to light mode" : "switch to darkmode"} onClick={toggleDarkMode}>
+                    {darkMode ? "☀️" : "🌙"}
                 </button>
             </div>
 
@@ -100,35 +113,61 @@ const Main = () => {
                     <div className='viewGrid'>
 
                         {/* If data exists, then the data are mapped */}
-                        {res.length !== 0 ?
-                            <div className="row" >
-                                {res && res.slice(0, limit).map((val) => (
-
-                                    // Component split up in a different page
+                        {isLoadingImages ? (
+                            // Show loading placeholders while fetching
+                            <center className="text-muted">
+                                <img src={loading} alt='loading_img' className='placeholderImages'></img><br />
+                                <span>Loading results</span>
+                            </center>
+                        ) : res.length !== 0 ? (
+                            <div className="row">
+                                {res.slice(0, limit).map((val) => (
                                     <ResultDisplay key={val.id} item={val} darkMode={darkMode} />
                                 ))}
                             </div>
-
+                        ) : (
                             // If data does not exist, then placeholder texts and image are shown
-                            : <center className='text-muted'>
-                                <img src={placeholder} alt='placeholder_img'></img><br />
+                            <center className='text-muted'>
+                                <img src={placeholder} alt='placeholder_img' className='placeholderImages'></img><br />
                                 <span>Search something to see results</span>
                             </center>
-                        }
+                        )}
                     </div>
 
                     {/* Section to show view more button */}
                     <div className='viewMore'>
-                        {res.length > limit &&
+                        {res.length > limit && (
                             <center>
+                                {isLoadingMore ? (
+                                    // Show loading text while fetching images
+                                    <button className="defaultButton">Loading...</button>
+                                ) : (
+                                    <button
+                                        type="button"
+                                        className="defaultButton"
+                                        onClick={() => {
+                                            setIsLoadingMore(true); // Start loading state
 
-                                {/* View more button */}
-                                <button type='button' className='defaultButton' onClick={() => setLimit(limit + 4)}>
-                                    <i className="fal fa-arrow-down"></i> &nbsp;
-                                    <span>View More</span>
-                                </button>
+                                            setLimit(prevLimit => {
+                                                const newLimit = prevLimit + 6;
+                                                setTimeout(() => {
+                                                    const firstNewRow = document.querySelector(`.resultDisplay .row div:nth-child(${prevLimit + 1})`);
+                                                    if (firstNewRow) {
+                                                        firstNewRow.scrollIntoView({ behavior: "smooth", block: "start" });
+                                                    }
+                                                    setIsLoadingMore(false); // Stop loading state after scroll
+                                                }, 500); // Slight delay for smoother UX
+                                                
+                                                return newLimit;
+                                            });
+                                        }}
+                                    >
+                                        <i className="fal fa-arrow-down"></i> &nbsp;
+                                        <span>View More</span>
+                                    </button>
+                                )}
                             </center>
-                        }
+                        )}
                     </div>
                 </div>
             </div>

@@ -18,6 +18,26 @@ const ResultDisplay = (props) => {
         return null; // Prevents error if URLs are missing
     }
 
+
+    // Function to handle image download
+    const handleDownload = async () => {
+        try {
+            const response = await fetch(urls.full);
+            const blob = await response.blob();
+            const blobUrl = URL.createObjectURL(blob);
+    
+            const a = document.createElement("a");
+            a.href = blobUrl;
+            a.download = `${alt_description || "image"}.jpg`; // Default name
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(blobUrl);
+        } catch (error) {
+            console.error("Error downloading the image:", error);
+        }
+    };
+
     
 
     return ( 
@@ -31,11 +51,11 @@ const ResultDisplay = (props) => {
                 <div className='card-body text-center p-3'>
                     <p className='card-title text-capitalize fs-6'>{alt_description}</p><br/>
 
-                    <small className='fs-9'>
+                    <span>
                         <i className='fas fa-heart'></i> {likes} &emsp;
-                        <i className="fal fa-copy"></i> {width} x {height} &emsp;
-                        <i className="fal fa-user"></i> {user.name}
-                    </small>
+                        <i className="fad fa-copy"></i> {width} x {height} &emsp;
+                        <i className="fas fa-user"></i> {user.name}
+                    </span>
                 </div>
             </div>
 
@@ -46,9 +66,16 @@ const ResultDisplay = (props) => {
                 onRequestClose={() => setIsModalOpen(false)}
                 contentLabel="Full Image"
                 className="modal-content"
-                overlayClassName="modal-overlay"
-            >
-                <button className="close-btn" onClick={() => setIsModalOpen(false)}>✖</button>
+                overlayClassName="modal-overlay">
+
+                <button className="close-btn" title="close image" data-bs-toggle="tooltip" data-bs-placement="top" onClick={() => setIsModalOpen(false)}>
+                    <i class="fas fa-close"></i>
+                </button>
+
+                <button className="download-btn" title="download image" onClick={handleDownload}>
+                    <i class="fas fa-download"></i>
+                </button>
+
                 <img src={urls.full} alt={alt_description} className="modal-image" />
             </Modal>
         </div>

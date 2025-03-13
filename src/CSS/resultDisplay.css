@@ -44,9 +44,19 @@
 
 
 
+.resultDisplay .viewGrid .card .card-body span{
+    font-size: small;
+    color: #7c7c7c;
+}
+
+
+
+
 .resultDisplay .viewMore button{
+    font-size: 14px;
+    background-color: #4689de;
     border-radius: 1.5rem;
-    padding: .5rem 1rem;
+    padding: .45rem .7rem;
 }
 
 
@@ -71,7 +81,7 @@
 /* Modal Content */
 .modal-content {
     position: relative;
-    max-width: 80%;
+    max-width: max-content;
     max-height: 100%;
 
     border: none;
@@ -89,14 +99,43 @@
 /* Close Button */
 .close-btn {
     position: absolute;
-    top: -25px;
-    right: -25px;
-    background: red;
+    top: 5px;
+    right: 5px;
+
     color: white;
-    border: 1px solid;
-    padding: 7px 15px;
-    font-size: 20px;
-    cursor: pointer;
+    background: rgba(0, 0, 0, 0.5);
     border-radius: 50%;
-    text-align: center;
+    border: none;
+
+    cursor: pointer;
+    opacity: .7;
+    transition: .2s ease-in-out;
+    
+    height: 41px;
+    width: 43px;
+}
+
+
+/* Download Button */
+.download-btn {
+    position: absolute;
+    top: 55px;
+    right: 5px;
+
+    color: white;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 50%;
+    border: none;
+
+    cursor: pointer;
+    opacity: .7;
+    transition: .2s ease-in-out;
+
+    height: 42px;
+    width: 43px;
+}
+
+.close-btn:hover, .download-btn:hover {
+    background: rgba(0, 0, 0, 0.7);
+    opacity: 1;
 }

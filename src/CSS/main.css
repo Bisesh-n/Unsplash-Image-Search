@@ -38,3 +38,9 @@ body.dark-mode {
 .toggle-button:hover {
     background-color: #666;
 }
+
+
+
+.placeholderImages{
+    height: 225px;
+}
