@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import Modal from "react-modal"
+import Modal from 'react-modal'
 
 // CSS imports
 import '../CSS/resultDisplay.css'
@@ -9,7 +9,7 @@ import '../CSS/resultDisplay.css'
 const ResultDisplay = (props) => {
 
     // object destructuring
-    const { alt_description, urls, likes, width, height, user } = props.item
+    const { alt_description, urls, width, height } = props.item
 
     // State for modal visibility
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -26,15 +26,15 @@ const ResultDisplay = (props) => {
             const blob = await response.blob();
             const blobUrl = URL.createObjectURL(blob);
     
-            const a = document.createElement("a");
+            const a = document.createElement('a');
             a.href = blobUrl;
-            a.download = `${alt_description || "image"}.jpg`; // Default name
+            a.download = `${alt_description || 'image'}.jpg`; // Default name
             document.body.appendChild(a);
             a.click();
             document.body.removeChild(a);
             URL.revokeObjectURL(blobUrl);
         } catch (error) {
-            console.error("Error downloading the image:", error);
+            console.error('Error downloading the image:', error);
         }
     };
 
@@ -44,17 +44,15 @@ const ResultDisplay = (props) => {
         <div className='col-md-6 col-lg-4 col-xl-4 mb-4'>
 
             {/* Bootstrap 'Card' component for ease of use */}
-            <div className={`card ${props.darkMode ? "dark" : ""}`}>
+            <div className={`card ${props.darkMode ? 'dark' : ''}`}>
                 <img src={urls.regular} className='card-img-top' alt={alt_description} onClick={() => setIsModalOpen(true)}/>
 
 
                 <div className='card-body text-center p-3'>
-                    <p className='card-title text-capitalize fs-6'>{alt_description}</p><br/>
+                    <p className='card-title text-capitalize'>{alt_description}</p><br/>
 
-                    <span>
-                        <i className='fas fa-heart'></i> {likes} &emsp;
-                        <i className="fad fa-copy"></i> {width} x {height} &emsp;
-                        <i className="fas fa-user"></i> {user.name}
+                    <span title='resolution'>
+                        <i className='fad fa-copy'></i> {width} x {height} &emsp;
                     </span>
                 </div>
             </div>
@@ -64,19 +62,19 @@ const ResultDisplay = (props) => {
             <Modal
                 isOpen={isModalOpen}
                 onRequestClose={() => setIsModalOpen(false)}
-                contentLabel="Full Image"
-                className="modal-content"
-                overlayClassName="modal-overlay">
+                contentLabel='Full Image'
+                className='modal-content'
+                overlayClassName='modal-overlay'>
 
-                <button className="close-btn" title="close image" data-bs-toggle="tooltip" data-bs-placement="top" onClick={() => setIsModalOpen(false)}>
-                    <i class="fas fa-close"></i>
+                <button className='close-btn' title='close image' data-bs-toggle='tooltip' data-bs-placement='top' onClick={() => setIsModalOpen(false)}>
+                    <i class='fas fa-close'></i>
                 </button>
 
-                <button className="download-btn" title="download image" onClick={handleDownload}>
-                    <i class="fas fa-download"></i>
+                <button className='download-btn' title='download image' onClick={handleDownload}>
+                    <i class='fas fa-download'></i>
                 </button>
 
-                <img src={urls.full} alt={alt_description} className="modal-image" />
+                <img src={urls.full} alt={alt_description} className='modal-image' />
             </Modal>
         </div>
     )

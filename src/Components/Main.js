@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 
 // CSS imports
 import '../CSS/main.css'
-import '../CSS/searchResult.css'
 import '../CSS/searchInput.css'
 
 // Defining 'ResultDisplay' component
@@ -84,7 +83,7 @@ const Main = () => {
 
             {/* Main title */}
             <div className='projTitle d-flex align-items-center justify-content-between'>
-                <h2 className='m-0'><b>Unsplash Image Search App</b></h2>
+                <h3 className='m-0'><b>Unsplash Image Search App</b></h3>
 
                 {/* Dark Mode Toggle Button */}
                 <button className="toggle-button" title={darkMode ? "switch to light mode" : "switch to darkmode"} onClick={toggleDarkMode}>
@@ -99,76 +98,76 @@ const Main = () => {
                 <input className={`${darkMode ? "dark" : ""}`} type='text' name='photoSearch' placeholder='Type anything and hit enter...' value={img} onChange={(e) => setImg(e.target.value)} />
 
                 {/* Search button */}
-                <button type='submit' className='defaultButton' onClick={onSubmit}>
+                <button type='submit' className='btn-primary defaultButton' onClick={onSubmit}>
                     <i className="fal fa-search"></i> &nbsp;
                     <span>Search</span>
                 </button>
             </form>
 
+
+
             {/* Section where the search result is shown */}
-            <div className='searchResult'>
-                <div className='resultDisplay'>
+            <div className='resultDisplay'>
 
-                    {/* Images are displayed in grid format */}
-                    <div className='viewGrid'>
+                {/* Images are displayed in grid format */}
+                <div className='viewGrid'>
 
-                        {/* If data exists, then the data are mapped */}
-                        {isLoadingImages ? (
-                            // Show loading placeholders while fetching
-                            <center className="text-muted">
-                                <img src={loading} alt='loading_img' className='placeholderImages'></img><br />
-                                <span>Loading results</span>
-                            </center>
-                        ) : res.length !== 0 ? (
-                            <div className="row">
-                                {res.slice(0, limit).map((val) => (
-                                    <ResultDisplay key={val.id} item={val} darkMode={darkMode} />
-                                ))}
-                            </div>
-                        ) : (
-                            // If data does not exist, then placeholder texts and image are shown
-                            <center className='text-muted'>
-                                <img src={placeholder} alt='placeholder_img' className='placeholderImages'></img><br />
-                                <span>Search something to see results</span>
-                            </center>
-                        )}
-                    </div>
+                    {/* If data exists, then the data are mapped */}
+                    {isLoadingImages ? (
+                        // Show loading placeholders while fetching
+                        <center className='text-muted'>
+                            <img src={loading} alt='loading_img' className='placeholderImages'></img><br />
+                            <span>Loading results</span>
+                        </center>
+
+                    ) : res.length !== 0 ? (
+                        <div className='row'>
+                            {res.slice(0, limit).map((val) => (
+                                <ResultDisplay key={val.id} item={val} darkMode={darkMode} />
+                            ))}
+                        </div>
+                    ) : (
+                        // If data does not exist, then placeholder texts and image are shown
+                        <center className='text-muted'>
+                            <img src={placeholder} alt='placeholder_img' className='placeholderImages'></img><br />
+                            <span>Search something to see results</span>
+                        </center>
+                    )}
+
 
                     {/* Section to show view more button */}
-                    <div className='viewMore'>
-                        {res.length > limit && (
-                            <center>
-                                {isLoadingMore ? (
-                                    // Show loading text while fetching images
-                                    <button className="defaultButton">Loading...</button>
-                                ) : (
-                                    <button
-                                        type="button"
-                                        className="defaultButton"
-                                        onClick={() => {
-                                            setIsLoadingMore(true); // Start loading state
+                    {res.length > limit && (
+                        <center>
+                            {isLoadingMore ? (
+                                // Show loading text while fetching images
+                                <button className='btn-info defaultButton'>Loading...</button>
+                            ) : (
+                                <button
+                                    type='button'
+                                    className='btn-primary defaultButton'
+                                    onClick={() => {
+                                        setIsLoadingMore(true); // Start loading state
 
-                                            setLimit(prevLimit => {
-                                                const newLimit = prevLimit + 6;
-                                                setTimeout(() => {
-                                                    const firstNewRow = document.querySelector(`.resultDisplay .row div:nth-child(${prevLimit + 1})`);
-                                                    if (firstNewRow) {
-                                                        firstNewRow.scrollIntoView({ behavior: "smooth", block: "start" });
-                                                    }
-                                                    setIsLoadingMore(false); // Stop loading state after scroll
-                                                }, 500); // Slight delay for smoother UX
-                                                
-                                                return newLimit;
-                                            });
-                                        }}
-                                    >
-                                        <i className="fal fa-arrow-down"></i> &nbsp;
-                                        <span>View More</span>
-                                    </button>
-                                )}
-                            </center>
-                        )}
-                    </div>
+                                        setLimit(prevLimit => {
+                                            const newLimit = prevLimit + 6;
+                                            setTimeout(() => {
+                                                const firstNewRow = document.querySelector(`.resultDisplay .row div:nth-child(${prevLimit + 1})`);
+                                                if (firstNewRow) {
+                                                    firstNewRow.scrollIntoView({ behavior: "smooth", block: "start" });
+                                                }
+                                                setIsLoadingMore(false); // Stop loading state after scroll
+                                            }, 500); // Slight delay for smoother UX
+                                            
+                                            return newLimit;
+                                        });
+                                    }}
+                                >
+                                    {/* <i className="fal fa-arrow-down"></i> &nbsp; */}
+                                    <span>see more</span>
+                                </button>
+                            )}
+                        </center>
+                    )}
                 </div>
             </div>
         </div>

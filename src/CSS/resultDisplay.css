@@ -1,17 +1,11 @@
 .resultDisplay {
-    height: 100%;
-    
-    flex: 1;
-    display: flex;
-    gap: .5rem;
-    flex-direction: column;
-    justify-content: space-between;
+    height: calc(100% - 130px);
+    overflow-x: hidden;
+    overflow-y: auto;
 }
 
 .resultDisplay .viewGrid {
-    overflow-x: hidden;
-    overflow-y: auto;
-    padding: 0 0.5rem;
+    padding-right: .5rem;
 }
 
 
@@ -25,10 +19,6 @@
     overflow: hidden;
 }
 
-.dark{
-    background-color: #414141 !important;
-    color: white !important;
-}
 
 .resultDisplay .viewGrid .card img{
     height: 190px;
@@ -44,6 +34,9 @@
 
 
 
+.resultDisplay .viewGrid .card .card-body p{
+    font-size: 15px;
+}
 .resultDisplay .viewGrid .card .card-body span{
     font-size: small;
     color: #7c7c7c;
@@ -52,13 +45,10 @@
 
 
 
-.resultDisplay .viewMore button{
-    font-size: 14px;
-    background-color: #4689de;
-    border-radius: 1.5rem;
-    padding: .45rem .7rem;
+.dark{
+    background-color: #414141 !important;
+    color: white !important;
 }
-
 
 
 
