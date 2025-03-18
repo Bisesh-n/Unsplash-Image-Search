@@ -45,8 +45,9 @@ const ResultDisplay = (props) => {
 
             {/* Bootstrap 'Card' component for ease of use */}
             <div className={`card ${props.darkMode ? 'dark' : ''}`}>
-                <img src={urls.regular} className='card-img-top' alt={alt_description} onClick={() => setIsModalOpen(true)}/>
-
+                <div className='card-img'>
+                    <img src={urls.regular} className='card-img-top' alt={alt_description} onClick={() => setIsModalOpen(true)}/>
+                </div>
 
                 <div className='card-body text-center p-3'>
                     <p className='card-title text-capitalize'>{alt_description}</p><br/>
@@ -67,11 +68,11 @@ const ResultDisplay = (props) => {
                 overlayClassName='modal-overlay'>
 
                 <button className='close-btn' title='close image' data-bs-toggle='tooltip' data-bs-placement='top' onClick={() => setIsModalOpen(false)}>
-                    <i class='fas fa-close'></i>
+                    <i className='fas fa-close'></i>
                 </button>
 
                 <button className='download-btn' title='download image' onClick={handleDownload}>
-                    <i class='fas fa-download'></i>
+                    <i className='fas fa-download'></i>
                 </button>
 
                 <img src={urls.full} alt={alt_description} className='modal-image' />

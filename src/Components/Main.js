@@ -83,7 +83,7 @@ const Main = () => {
 
             {/* Main title */}
             <div className='projTitle d-flex align-items-center justify-content-between'>
-                <h3 className='m-0'><b>Unsplash Image Search App</b></h3>
+                <h5 className='m-0'><b>Unsplash Image Search App</b></h5>
 
                 {/* Dark Mode Toggle Button */}
                 <button className="toggle-button" title={darkMode ? "switch to light mode" : "switch to darkmode"} onClick={toggleDarkMode}>
@@ -95,13 +95,11 @@ const Main = () => {
             <form className='searchInput' onSubmit={onFormSubmit}>
 
                 {/* Search field (input) */}
+                <i className="fas fa-search text-muted"></i>
                 <input className={`${darkMode ? "dark" : ""}`} type='text' name='photoSearch' placeholder='Type anything and hit enter...' value={img} onChange={(e) => setImg(e.target.value)} />
 
                 {/* Search button */}
-                <button type='submit' className='btn-primary defaultButton' onClick={onSubmit}>
-                    <i className="fal fa-search"></i> &nbsp;
-                    <span>Search</span>
-                </button>
+                <button type='submit' className='d-none' onClick={onSubmit}></button>
             </form>
 
 
