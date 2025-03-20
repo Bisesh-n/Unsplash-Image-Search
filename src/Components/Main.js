@@ -115,17 +115,17 @@ const Main = () => {
                 <button type='submit' className='d-none' onClick={onSubmit}></button>
             </form>
 
-            <div className='searchedTerm d-flex align-items-center'>
-                {searchedTerm && (
-                    <>
-                        Showing search results for: &nbsp;
-                        <span>
-                            {searchedTerm} &nbsp;
-                            <i className='fal fa-times' onClick={clearSearch}></i>
-                        </span>
-                    </>
-                )}
-            </div>
+
+            {searchedTerm && (
+                <div className='searchedTerm d-flex align-items-center'>
+                    Showing results for: &nbsp;
+                    <span>
+                        {searchedTerm} &nbsp;
+                        <i className='fal fa-times' onClick={clearSearch}></i>
+                    </span>
+                </div>
+            )}
+
 
             {/* Section where the search result is shown */}
             <div className='resultDisplay'>
@@ -136,9 +136,8 @@ const Main = () => {
                     {/* If data exists, then the data are mapped */}
                     {isLoadingImages ? (
                         // Show loading placeholders while fetching
-                        <center className='text-muted'>
-                            <img src={loading} alt='loading_img' className='placeholderImages'></img><br />
-                            <span>Loading results</span>
+                        <center>
+                            <img src={loading} alt='loading_img' className='placeholderImages'></img>
                         </center>
 
                     ) : res.length !== 0 ? (
@@ -149,9 +148,9 @@ const Main = () => {
                         </div>
                     ) : (
                         // If data does not exist, then placeholder texts and image are shown
-                        <center className='text-muted'>
-                            <img src={placeholder} alt='placeholder_img' className='placeholderImages'></img><br />
-                            <span>Search something to see results</span>
+                        <center>
+                            <img src={placeholder} alt='placeholder_img' className='placeholderImages'></img>
+                            <small className='text-muted'>Search something to see results</small>
                         </center>
                     )}
 

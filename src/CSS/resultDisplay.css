@@ -40,11 +40,11 @@
 
     object-fit: cover;
     cursor: pointer;
-    transition: 0.33s ease-in-out, filter 0.33s ease-in-out;
+    transition: 0.3s ease-in-out, filter 0.33s ease-in-out;
 }
 .resultDisplay .viewGrid .imageResults .card:hover .card-img img{
-    filter: brightness(.9);
-    /* transform: scale(1.05); */
+    filter: brightness(.95);
+    transform: scale(1.1);
 }
 .resultDisplay .viewGrid .imageResults .card:hover .title-overlay {
     bottom: 5px;
@@ -145,7 +145,7 @@
 
     color: #000000;
     background: rgb(204 204 204 / 45%);
-    backdrop-filter: blur(3px);
+    backdrop-filter: blur(2px);
     border: none;
     border-radius: 50%;
 

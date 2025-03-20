@@ -27,10 +27,11 @@ body.dark-mode {
 
 
 .searchedTerm span{
-    background: #ebebeb;
-    padding: 2px 5px;
     font-size: 13px;
+    color: black;
+    background-color: #ebebeb;
     border-radius: 4px;
+    padding: 2px 5px;
 }
 .searchedTerm span i{
     color: red;
@@ -58,7 +59,12 @@ body.dark-mode {
 
 
 .placeholderImages{
-    height: 200px;
+    max-width: 100%;
+    height: auto;
+    width: 22%; 
+    min-width: 235px;
+    display: block;
+    margin: 0 auto;
 }
 
 
