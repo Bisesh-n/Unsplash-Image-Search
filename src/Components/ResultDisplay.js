@@ -41,20 +41,26 @@ const ResultDisplay = (props) => {
     
 
     return ( 
-        <div className='col-md-6 col-lg-4 col-xl-4 mb-4'>
+        <>
 
-            {/* Bootstrap 'Card' component for ease of use */}
             <div className={`card ${props.darkMode ? 'dark' : ''}`}>
                 <div className='card-img'>
-                    <img src={urls.regular} className='card-img-top' alt={alt_description} onClick={() => setIsModalOpen(true)}/>
-                </div>
+                    <img 
+                        src={urls.regular} 
+                        className='card-img-top' 
+                        alt={alt_description} 
+                        onClick={() => setIsModalOpen(true)}
+                    />
 
-                <div className='card-body text-center p-3'>
-                    <p className='card-title text-capitalize'>{alt_description}</p><br/>
-
-                    <span title='resolution'>
-                        <i className='fad fa-copy'></i> {width} x {height} &emsp;
+                    {/* Resolution Overlay */}
+                    <span className='resolution-overlay' title='resolution'>
+                        <i className='fad fa-copy'></i> {width} x {height}
                     </span>
+
+                    {/* Title Overlay */}
+                    <div className='title-overlay'>
+                        <p className='card-title'>{alt_description}</p>
+                    </div>
                 </div>
             </div>
 
@@ -68,16 +74,16 @@ const ResultDisplay = (props) => {
                 overlayClassName='modal-overlay'>
 
                 <button className='close-btn' title='close image' data-bs-toggle='tooltip' data-bs-placement='top' onClick={() => setIsModalOpen(false)}>
-                    <i className='fas fa-close'></i>
+                    <i className='fal fa-times'></i>
                 </button>
 
                 <button className='download-btn' title='download image' onClick={handleDownload}>
-                    <i className='fas fa-download'></i>
+                    <i className='fal fa-download'></i>
                 </button>
 
                 <img src={urls.full} alt={alt_description} className='modal-image' />
             </Modal>
-        </div>
+        </>
     )
 }
 

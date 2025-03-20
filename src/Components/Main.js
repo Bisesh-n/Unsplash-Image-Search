@@ -16,13 +16,15 @@ const Main = () => {
     const [res, setRes] = useState([]);
 
     // To set limit on initial display
-    const [limit, setLimit] = useState(6)
+    const [limit, setLimit] = useState(8)
 
     // Dark Mode State
     const [darkMode, setDarkMode] = useState(false);
 
     const [isLoadingMore, setIsLoadingMore] = useState(false);
     const [isLoadingImages, setIsLoadingImages] = useState(false);
+
+    const [searchedTerm, setSearchedTerm] = useState("");
 
     // Toggle Dark Mode
     const toggleDarkMode = () => {
@@ -61,15 +63,23 @@ const Main = () => {
         if (!img.trim()) return;
 
         setRes([]);   // Clear previous results
-        setLimit(6);
+        setLimit(8);
+
+        setSearchedTerm(img); // Save searched term
 
         fetchRequest();
         setImg("");
 
         setIsLoadingImages(true); // Start loading state
-
-    fetchRequest().finally(() => setIsLoadingImages(false)); // Stop loading after fetching
+        fetchRequest().finally(() => setIsLoadingImages(false)); // Stop loading after fetching
     };
+
+
+    const clearSearch = () => {
+        setRes([]);  // Clear images
+        setSearchedTerm(""); // Clear search term
+    };
+
 
     // To prevent reloding
     const onFormSubmit = e => {
@@ -86,8 +96,11 @@ const Main = () => {
                 <h5 className='m-0'><b>Unsplash Image Search App</b></h5>
 
                 {/* Dark Mode Toggle Button */}
-                <button className="toggle-button" title={darkMode ? "switch to light mode" : "switch to darkmode"} onClick={toggleDarkMode}>
-                    {darkMode ? "☀️" : "🌙"}
+                <button className="toggle-button" title={darkMode ? "Switch to Light Mode" : "Switch to Dark Mode"} onClick={toggleDarkMode}>
+                    {darkMode 
+                        ? <i className="fal fa-sun"></i> 
+                        : <i className="fal fa-moon-stars"></i>
+                    }
                 </button>
             </div>
 
@@ -102,7 +115,17 @@ const Main = () => {
                 <button type='submit' className='d-none' onClick={onSubmit}></button>
             </form>
 
-
+            <div className='searchedTerm d-flex align-items-center'>
+                {searchedTerm && (
+                    <>
+                        Showing search results for: &nbsp;
+                        <span>
+                            {searchedTerm} &nbsp;
+                            <i className='fal fa-times' onClick={clearSearch}></i>
+                        </span>
+                    </>
+                )}
+            </div>
 
             {/* Section where the search result is shown */}
             <div className='resultDisplay'>
@@ -119,7 +142,7 @@ const Main = () => {
                         </center>
 
                     ) : res.length !== 0 ? (
-                        <div className='row'>
+                        <div className='imageResults'>
                             {res.slice(0, limit).map((val) => (
                                 <ResultDisplay key={val.id} item={val} darkMode={darkMode} />
                             ))}
@@ -147,14 +170,14 @@ const Main = () => {
                                         setIsLoadingMore(true); // Start loading state
 
                                         setLimit(prevLimit => {
-                                            const newLimit = prevLimit + 6;
+                                            const newLimit = prevLimit + 4;
                                             setTimeout(() => {
-                                                const firstNewRow = document.querySelector(`.resultDisplay .row div:nth-child(${prevLimit + 1})`);
+                                                const firstNewRow = document.querySelector(`.resultDisplay .imageResults div:nth-child(${prevLimit + 1})`);
                                                 if (firstNewRow) {
                                                     firstNewRow.scrollIntoView({ behavior: "smooth", block: "start" });
                                                 }
                                                 setIsLoadingMore(false); // Stop loading state after scroll
-                                            }, 500); // Slight delay for smoother UX
+                                            }, 100); // Slight delay for smoother UX
                                             
                                             return newLimit;
                                         });

@@ -32,8 +32,6 @@ code {
 ::-webkit-scrollbar-thumb {
   background: #cccccc;
   border-radius: 10px;
-  
-  cursor: grab;
 }
 
 /* Hover effect on scrollbar */
