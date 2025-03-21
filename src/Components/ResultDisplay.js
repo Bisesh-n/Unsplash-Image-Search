@@ -82,6 +82,16 @@ const ResultDisplay = (props) => {
                 </button>
 
                 <img src={urls.full} alt={alt_description} className='modal-image' />
+
+
+
+                <span className='resolution-overlay' title='resolution'>
+                    <i className='fad fa-copy'></i>&nbsp; {width} x {height}
+                </span>
+
+                <div className='title-overlay' title={alt_description}>
+                    <p className='card-title'>{alt_description}</p>
+                </div>
             </Modal>
         </>
     )

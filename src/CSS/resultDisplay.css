@@ -50,15 +50,16 @@
 }
 
 
-.resultDisplay .viewGrid .imageResults .card .title-overlay {
+.title-overlay {
     position: absolute;
     bottom: -30px;
     left: 50%;
     transform: translateX(-50%); 
-    max-width: calc(100% - 14px);
-    padding: 5px 8px;
+    max-width: calc(100% - 15px);
+    padding: 5px 7px;
 
-    background: rgb(255 255 255 / 45%);
+    color: #000000;
+    background: rgb(255 255 255 / 50%);
     backdrop-filter: blur(2px);
     border-radius: 7px;
     text-align: center;
@@ -67,7 +68,7 @@
 }
 
 /* Title text with ellipsis if too long */
-.resultDisplay .viewGrid .imageResults .card .title-overlay p {
+.title-overlay p {
     font-size: 13px;
     margin: 0;
     white-space: nowrap;
@@ -76,14 +77,15 @@
 }
 
 /* Resolution overlay (top-left) */
-.resultDisplay .viewGrid .imageResults .card .resolution-overlay {
+.resolution-overlay {
     position: absolute;
     top: 7px;
-    right: 7px;
-    padding: 5px;
+    left: 7px;
+    padding: 5px 5px 4px;
 
     font-size: 10px;
-    background: rgb(255 255 255 / 45%);
+    color: #000000;
+    background: rgb(255 255 255 / 50%);
     border-radius: 7px;
     backdrop-filter: blur(2px);
 }
@@ -95,6 +97,8 @@
     color: white;
     border-color: black !important;
 }
+
+
 
 
 
@@ -141,7 +145,7 @@
     right: 10px;
 
     color: #000000;
-    background: rgb(204 204 204 / 45%);
+    background: rgb(255 255 255/ 50%);
     backdrop-filter: blur(2px);
     border: none;
     border-radius: 50%;
@@ -157,7 +161,7 @@
 }
 
 .close-btn:hover, .download-btn:hover {
-    background: rgb(204 204 204 / 65%);
+    background: rgb(255 255 255 / 60%);
 }
 
 
@@ -176,4 +180,14 @@
 .close-btn i, .download-btn i {
     font-size: 15px;
     line-height: 1;
+}
+
+
+
+.modal-content .title-overlay{
+    bottom: 10px;
+    opacity: 0;
+}
+.modal-content:hover .title-overlay {
+    opacity: 1;
 }
