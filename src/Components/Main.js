@@ -10,6 +10,7 @@ import ResultDisplay from './ResultDisplay'
 // Image import
 import placeholder from '../images/placeholder.png'
 import loading from '../images/loading.png'
+import nothingFound from '../images/nothingFound.gif'
 
 const Main = () => {
     const [img, setImg] = useState("");
@@ -93,12 +94,13 @@ const Main = () => {
 
             {/* Main title */}
             <div className='projTitle d-flex align-items-center justify-content-between'>
-                <h5 className='m-0'><b>Unsplash Image Search App</b></h5>
+                <h5 className='m-0'><b>Unsplash Image Search</b></h5>
 
                 {/* Dark Mode Toggle Button */}
                 <button className="toggle-button" title={darkMode ? "Switch to Light Mode" : "Switch to Dark Mode"} onClick={toggleDarkMode}>
                     {darkMode 
-                        ? <i className="fal fa-sun"></i> 
+                        // ? <i className="fas fa-sun"></i> 
+                        ? <i class="fal fa-lightbulb-on"></i>
                         : <i className="fal fa-moon-stars"></i>
                     }
                 </button>
@@ -146,10 +148,18 @@ const Main = () => {
                                 <ResultDisplay key={val.id} item={val} darkMode={darkMode} />
                             ))}
                         </div>
+
+                    ) : searchedTerm ? (
+                        // If the search was performed but no results found
+                        <center>
+                            <img src={nothingFound} alt='nothingFound_img' className='placeholderImages'></img>
+                            <small className='text-muted'>Nothing found for " <b>{searchedTerm}</b> "</small>
+                        </center>
+
                     ) : (
                         // If data does not exist, then placeholder texts and image are shown
                         <center>
-                            <img src={placeholder} alt='placeholder_img' className='placeholderImages'></img>
+                            <img src={placeholder} alt='placeholder_img' className='placeholderImages mt-5'></img>
                             <small className='text-muted'>Search something to see results</small>
                         </center>
                     )}
@@ -160,11 +170,11 @@ const Main = () => {
                         <center>
                             {isLoadingMore ? (
                                 // Show loading text while fetching images
-                                <button className='btn-info defaultButton'>Loading...</button>
+                                <button className='btn-info showMore'>Loading...</button>
                             ) : (
                                 <button
                                     type='button'
-                                    className='btn-primary defaultButton'
+                                    className='btn-secondary showMore'
                                     onClick={() => {
                                         setIsLoadingMore(true); // Start loading state
 
@@ -183,7 +193,7 @@ const Main = () => {
                                     }}
                                 >
                                     {/* <i className="fal fa-arrow-down"></i> &nbsp; */}
-                                    <span>see more</span>
+                                    <span>See more</span>
                                 </button>
                             )}
                         </center>

@@ -54,11 +54,11 @@ const ResultDisplay = (props) => {
 
                     {/* Resolution Overlay */}
                     <span className='resolution-overlay' title='resolution'>
-                        <i className='fad fa-copy'></i> {width} x {height}
+                        <i className='fad fa-copy'></i>&nbsp; {width} x {height}
                     </span>
 
                     {/* Title Overlay */}
-                    <div className='title-overlay'>
+                    <div className='title-overlay' title={alt_description}>
                         <p className='card-title'>{alt_description}</p>
                     </div>
                 </div>
@@ -73,11 +73,11 @@ const ResultDisplay = (props) => {
                 className='modal-content'
                 overlayClassName='modal-overlay'>
 
-                <button className='close-btn' title='close image' data-bs-toggle='tooltip' data-bs-placement='top' onClick={() => setIsModalOpen(false)}>
+                <button className='close-btn' title='Close Image' data-bs-toggle='tooltip' data-bs-placement='top' onClick={() => setIsModalOpen(false)}>
                     <i className='fal fa-times'></i>
                 </button>
 
-                <button className='download-btn' title='download image' onClick={handleDownload}>
+                <button className='download-btn' title='Download Image' onClick={handleDownload}>
                     <i className='fal fa-download'></i>
                 </button>
 

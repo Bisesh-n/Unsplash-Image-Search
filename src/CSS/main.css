@@ -39,6 +39,20 @@ body.dark-mode {
 }
 
 
+.showMore{
+    border: 0;
+    border-radius: 10px;
+    background-color: #407089;
+    
+    transition: .2s ease-in-out;
+    padding: .6rem 1rem;
+}
+.showMore:hover, .showMore:focus{
+    background-color: #2e5c74;
+}
+
+
+
 .toggle-button {
     color: white;
     background-color: #2e5c74;
@@ -59,12 +73,13 @@ body.dark-mode {
 
 
 .placeholderImages{
-    max-width: 100%;
-    height: auto;
-    width: 22%; 
-    min-width: 235px;
     display: block;
     margin: 0 auto;
+
+    height: auto;
+    width: 22%; 
+    max-width: 100%;
+    min-width: 235px;
 }
 
 

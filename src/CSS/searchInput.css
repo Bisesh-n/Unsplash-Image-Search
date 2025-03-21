@@ -6,15 +6,6 @@
 }
 
 
-.defaultButton{
-    color: white;
-    border: 0;
-    border-radius: 25px;
-    
-    transition: .2s ease-in-out;
-    padding: .6rem 1rem;
-}
-
 .searchInput i{
     z-index: 1;
     font-size: 13px;

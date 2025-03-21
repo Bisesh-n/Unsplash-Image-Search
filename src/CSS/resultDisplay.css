@@ -5,26 +5,25 @@
 }
 
 .resultDisplay .viewGrid {
-    padding: 0 .5rem .4rem 0;
+    padding: 0 .7rem .4rem 0;
 }
 
 
 .resultDisplay .viewGrid .imageResults {
     display: grid;
-    gap: 2rem 2rem;
+    gap: 3rem;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Auto scales */
-
-    padding: 0 .5rem .4rem 0;
     margin-bottom: 2rem;
 }
 
 
 .resultDisplay .viewGrid .imageResults .card{
-    height: 290px;
-    overflow: hidden;
-    
+    color: #000000;
     border: 0;
     border-radius: 10px;
+
+    height: 290px;
+    overflow: hidden;
 }
 
 
@@ -40,14 +39,14 @@
 
     object-fit: cover;
     cursor: pointer;
-    transition: 0.3s ease-in-out, filter 0.33s ease-in-out;
+    transition: 0.4s ease-in-out, filter 0.4s ease-in-out;
 }
 .resultDisplay .viewGrid .imageResults .card:hover .card-img img{
-    filter: brightness(.95);
+    filter: brightness(.9);
     transform: scale(1.1);
 }
 .resultDisplay .viewGrid .imageResults .card:hover .title-overlay {
-    bottom: 5px;
+    bottom: 7px;
 }
 
 
@@ -56,16 +55,15 @@
     bottom: -30px;
     left: 50%;
     transform: translateX(-50%); 
-    max-width: calc(100% - 10px);
+    max-width: calc(100% - 14px);
     padding: 5px 8px;
 
-    color: #000000;
     background: rgb(255 255 255 / 45%);
     backdrop-filter: blur(2px);
     border-radius: 7px;
     text-align: center;
 
-    transition: .3s ease-in-out;
+    transition: .4s ease-in-out;
 }
 
 /* Title text with ellipsis if too long */
@@ -80,12 +78,11 @@
 /* Resolution overlay (top-left) */
 .resultDisplay .viewGrid .imageResults .card .resolution-overlay {
     position: absolute;
-    top: 5px;
-    left: 5px;
+    top: 7px;
+    right: 7px;
     padding: 5px;
 
     font-size: 10px;
-    color: #000000;
     background: rgb(255 255 255 / 45%);
     border-radius: 7px;
     backdrop-filter: blur(2px);
@@ -95,7 +92,7 @@
 
 .dark{
     background-color: #414141 !important;
-    color: white !important;
+    color: white;
     border-color: black !important;
 }
 
