@@ -22,7 +22,7 @@
     border: 0;
     border-radius: 10px;
 
-    height: 290px;
+    height: 330px;
     overflow: hidden;
 }
 
@@ -48,6 +48,9 @@
 .resultDisplay .viewGrid .imageResults .card:hover .title-overlay {
     bottom: 7px;
 }
+.resultDisplay .viewGrid .imageResults .card:hover .download-btn {
+    top: 5px;
+}
 
 
 .title-overlay {
@@ -58,9 +61,6 @@
     max-width: calc(100% - 15px);
     padding: 5px 7px;
 
-    color: #000000;
-    background: rgb(255 255 255 / 50%);
-    backdrop-filter: blur(2px);
     border-radius: 7px;
     text-align: center;
 
@@ -79,17 +79,25 @@
 /* Resolution overlay (top-left) */
 .resolution-overlay {
     position: absolute;
-    top: 7px;
-    left: 7px;
+    top: 5px;
+    left: 5px;
     padding: 5px 5px 4px;
 
     font-size: 10px;
-    color: #000000;
-    background: rgb(255 255 255 / 50%);
     border-radius: 7px;
-    backdrop-filter: blur(2px);
 }
 
+
+.card-img .download-btn {
+    top: -30px;
+    right: 5px;
+
+    width: 30px; 
+    height: 30px;
+    min-width: 30px;
+    min-height: 30px;
+    transition: .4s ease-in-out;
+}
 
 
 .dark{
@@ -97,6 +105,15 @@
     color: white;
     border-color: black !important;
 }
+
+
+.frostedGlass{
+    color: #000000;
+    background: rgb(255 255 255 / 50%);
+    backdrop-filter: blur(2px);
+}
+
+
 
 
 
@@ -144,9 +161,6 @@
     position: absolute;
     right: 10px;
 
-    color: #000000;
-    background: rgb(255 255 255/ 50%);
-    backdrop-filter: blur(2px);
     border: none;
     border-radius: 50%;
 
