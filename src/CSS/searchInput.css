@@ -19,7 +19,7 @@
     background-color: #f0f0f0;
     border-radius: 10px;
 
-    transition: .2s ease-in-out;
+    transition: .3s ease-in-out;
 
     width: 100%;
     max-width: 400px;
@@ -27,19 +27,26 @@
 }
 .searchInput input:focus{
     background-color: white;
-    box-shadow: 0px 0px 5px 2px rgb(0, 0, 0, 12%);
+    box-shadow: 0px 0px 4px 1px rgb(0, 0, 0, 20%);
 }
+.searchInput input:focus::placeholder{
+    opacity: 0;
+}
+
 
 
 
 
 
 /* dark mode */
-.dark input{
-    background-color: #333;
+.darkInput{
+    background-color: #333 !important;
     color: white;
 }
+.darkInput:focus{
+    background-color: #5a5a5a !important;
+}
 
-.dark input::placeholder {
-    color: lightgray;
+.darkInput::placeholder, .darkInput i {
+    color: #9d9d9d;
 }

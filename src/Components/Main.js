@@ -97,13 +97,23 @@ const Main = () => {
                 <h5 className='m-0'><b>Unsplash Image Search</b></h5>
 
                 {/* Dark Mode Toggle Button */}
-                <button className="toggle-button" title={darkMode ? "Switch to Light Mode" : "Switch to Dark Mode"} onClick={toggleDarkMode}>
-                    {darkMode 
-                        // ? <i className="fas fa-sun"></i> 
-                        ? <i class="fal fa-lightbulb-on"></i>
-                        : <i className="fal fa-moon-stars"></i>
-                    }
-                </button>
+                <div className="toggle-button-group">
+                    <button 
+                        className={`toggle-button ${!darkMode ? "active" : ""}`} 
+                        onClick={() => toggleDarkMode(false)}
+                        title="Light Mode"
+                    >
+                        <i class="fal fa-lightbulb"></i>&nbsp;<span>Light</span>
+                    </button>
+
+                    <button 
+                        className={`toggle-button ${darkMode ? "active" : ""}`} 
+                        onClick={() => toggleDarkMode(true)}
+                        title="Dark Mode"
+                    >
+                        <i className="fal fa-moon"></i>&nbsp;<span>Dark</span>
+                    </button>
+                </div>
             </div>
 
             {/* Section for search field (input) and search button */}
@@ -111,7 +121,7 @@ const Main = () => {
 
                 {/* Search field (input) */}
                 <i className="fas fa-search text-muted"></i>
-                <input className={`${darkMode ? "dark" : ""}`} type='text' name='photoSearch' placeholder='Type anything and hit enter...' value={img} onChange={(e) => setImg(e.target.value)} />
+                <input className={`${darkMode ? "darkInput" : ""}`} type='text' name='photoSearch' placeholder='Type anything and hit enter...' value={img} onChange={(e) => setImg(e.target.value)} />
 
                 {/* Search button */}
                 <button type='submit' className='d-none' onClick={onSubmit}></button>
@@ -168,34 +178,29 @@ const Main = () => {
                     {/* Section to show view more button */}
                     {res.length > limit && (
                         <center>
-                            {isLoadingMore ? (
-                                // Show loading text while fetching images
-                                <button className='btn-info showMore'>Loading...</button>
-                            ) : (
-                                <button
-                                    type='button'
-                                    className='btn-secondary showMore'
-                                    onClick={() => {
-                                        setIsLoadingMore(true); // Start loading state
+                            <button
+                                type='button'
+                                className={darkMode ? 'btn-dark showMore darkbtn' : 'btn-dark showMore'}
+                                onClick={() => {
+                                    setIsLoadingMore(true); // Start loading state
 
-                                        setLimit(prevLimit => {
-                                            const newLimit = prevLimit + 4;
-                                            setTimeout(() => {
-                                                const firstNewRow = document.querySelector(`.resultDisplay .imageResults div:nth-child(${prevLimit + 1})`);
-                                                if (firstNewRow) {
-                                                    firstNewRow.scrollIntoView({ behavior: "smooth", block: "start" });
-                                                }
-                                                setIsLoadingMore(false); // Stop loading state after scroll
-                                            }, 100); // Slight delay for smoother UX
-                                            
-                                            return newLimit;
-                                        });
-                                    }}
-                                >
-                                    {/* <i className="fal fa-arrow-down"></i> &nbsp; */}
-                                    <span>See more</span>
-                                </button>
-                            )}
+                                    setLimit(prevLimit => {
+                                        const newLimit = prevLimit + 4;
+                                        setTimeout(() => {
+                                            const firstNewRow = document.querySelector(`.resultDisplay .imageResults div:nth-child(${prevLimit + 1})`);
+                                            if (firstNewRow) {
+                                                firstNewRow.scrollIntoView({ behavior: "smooth", block: "start" });
+                                            }
+                                            setIsLoadingMore(false); // Stop loading state after scroll
+                                        }, 100); // Slight delay for smoother UX
+                                        
+                                        return newLimit;
+                                    });
+                                }}
+                            >
+                                {/* <i className="fal fa-arrow-down"></i> &nbsp; */}
+                                <span>See more</span>
+                            </button>
                         </center>
                     )}
                 </div>

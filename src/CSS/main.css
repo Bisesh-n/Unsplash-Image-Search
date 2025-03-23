@@ -30,8 +30,9 @@ body.dark-mode {
     font-size: 13px;
     color: black;
     background-color: #ebebeb;
-    border-radius: 4px;
-    padding: 2px 5px;
+    border-radius: 5px;
+
+    padding: 1px 5px 3px;
 }
 .searchedTerm span i{
     color: red;
@@ -40,35 +41,17 @@ body.dark-mode {
 
 
 .showMore{
+    font-size: 14px;
     border: 0;
-    border-radius: 10px;
-    background-color: #407089;
-    
-    transition: .2s ease-in-out;
-    padding: .6rem 1rem;
+    border-radius: 25px;
+    transition: .3s ease-in-out;
+
+    padding: 10px 15px;
 }
 .showMore:hover, .showMore:focus{
-    background-color: #2e5c74;
+    background-color: #353d44;
 }
 
-
-
-.toggle-button {
-    color: white;
-    background-color: #2e5c74;
-    border: none;
-    border-radius: 25px;
-
-    cursor: pointer;
-    transition: .25s ease-in-out;
-
-    height: 40px;
-    width: 41px;
-}
-
-.toggle-button:hover {
-    background-color: #407089;
-}
 
 
 
@@ -83,3 +66,38 @@ body.dark-mode {
 }
 
 
+.darkbtn{
+    background-color: #354351;
+}
+.darkbtn:hover{
+    background-color: #414f5e;
+}
+
+
+
+
+
+
+.toggle-button-group {
+    display: flex;
+    overflow: hidden;
+
+    border-radius: 25px;
+    background-color: #f5f5f5;
+    padding: 2px 3px;
+}
+
+.toggle-button {
+    font-size: 12px;
+    background: #f5f5f5;
+    border-radius: 25px;
+    border: none;
+
+    cursor: pointer;
+    padding: 4px 10px;
+}
+
+.toggle-button.active {
+    background: #333;
+    color: white;
+}

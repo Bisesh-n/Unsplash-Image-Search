@@ -1,5 +1,5 @@
 .resultDisplay {
-    height: calc(100% - 130px);
+    height: calc(100% - 120px);
     overflow-x: hidden;
     overflow-y: auto;
 }
@@ -20,7 +20,7 @@
 .resultDisplay .viewGrid .imageResults .card{
     color: #000000;
     border: 0;
-    border-radius: 10px;
+    border-radius: 11px;
 
     height: 330px;
     overflow: hidden;
@@ -50,6 +50,7 @@
 }
 .resultDisplay .viewGrid .imageResults .card:hover .download-btn {
     top: 5px;
+    right: 5px;
 }
 
 
@@ -90,7 +91,7 @@
 
 .card-img .download-btn {
     top: -30px;
-    right: 5px;
+    right: -30px;
 
     width: 30px; 
     height: 30px;
@@ -98,12 +99,14 @@
     min-height: 30px;
     transition: .4s ease-in-out;
 }
+.card-img .download-btn i{
+    font-size: 14px;
+}
 
 
 .dark{
-    background-color: #414141 !important;
+    background-color: #414141;
     color: white;
-    border-color: black !important;
 }
 
 
@@ -201,6 +204,9 @@
 .modal-content .title-overlay{
     bottom: 10px;
     opacity: 0;
+}
+.modal-content .title-overlay p{
+    white-space: normal;
 }
 .modal-content:hover .title-overlay {
     opacity: 1;

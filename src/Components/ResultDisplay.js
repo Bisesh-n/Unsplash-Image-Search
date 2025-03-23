@@ -93,7 +93,7 @@ const ResultDisplay = (props) => {
                     <i className='fad fa-copy'></i>&nbsp; {width} x {height}
                 </span>
 
-                <div className='title-overlay frostedGlass' title={alt_description}>
+                <div className='title-overlay frostedGlass'>
                     <p className='card-title'>{alt_description}</p>
                 </div>
             </Modal>
