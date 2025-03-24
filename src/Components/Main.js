@@ -180,7 +180,7 @@ const Main = () => {
                         <center>
                             <button
                                 type='button'
-                                className={darkMode ? 'btn-dark showMore darkbtn' : 'btn-dark showMore'}
+                                className={darkMode ? 'showMore darkbtn' : 'showMore'}
                                 onClick={() => {
                                     setIsLoadingMore(true); // Start loading state
 

@@ -42,16 +42,26 @@ body.dark-mode {
 
 .showMore{
     font-size: 14px;
+    color: white;
+    background: linear-gradient(115deg, #ababab 0%, #4f4f4f 50%, #000000 100%);
+    background-size: 100% 300%;
     border: 0;
     border-radius: 25px;
-    transition: .3s ease-in-out;
 
     padding: 10px 15px;
+    transition: background-position 0.3s ease-in-out;
 }
-.showMore:hover, .showMore:focus{
-    background-color: #353d44;
+.showMore:hover{
+    background-position: center;
 }
 
+.darkbtn{
+    background: #3c3e3f;
+    transition: 0.3s ease-in-out;
+}
+.darkbtn:hover{
+    background-color: #4b4f51;
+}
 
 
 
@@ -66,12 +76,7 @@ body.dark-mode {
 }
 
 
-.darkbtn{
-    background-color: #354351;
-}
-.darkbtn:hover{
-    background-color: #414f5e;
-}
+
 
 
 
@@ -83,13 +88,13 @@ body.dark-mode {
     overflow: hidden;
 
     border-radius: 25px;
-    background-color: #f5f5f5;
-    padding: 2px 3px;
+    border: 1px solid #f0f0f0;
+    background-color: #f0f0f0;
 }
 
 .toggle-button {
     font-size: 12px;
-    background: #f5f5f5;
+    background: #f0f0f0;
     border-radius: 25px;
     border: none;
 
@@ -98,6 +103,6 @@ body.dark-mode {
 }
 
 .toggle-button.active {
-    background: #333;
+    background: linear-gradient(115deg, #a0a0a0 0%, #626262 40%, #191919 100%);
     color: white;
 }
