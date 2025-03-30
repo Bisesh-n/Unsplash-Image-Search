@@ -43,7 +43,7 @@ body.dark-mode {
 .showMore{
     font-size: 14px;
     color: white;
-    background: linear-gradient(115deg, #ababab 0%, #4f4f4f 50%, #000000 100%);
+    background: linear-gradient(115deg, #9ec2ff 0%, #476aa5 50%, #071e5c 100%);
     background-size: 100% 300%;
     border: 0;
     border-radius: 25px;
@@ -55,14 +55,14 @@ body.dark-mode {
     background-position: center;
 }
 
-.darkbtn{
+/* .darkbtn{
     background: #3c3e3f;
     transition: 0.3s ease-in-out;
 }
 .darkbtn:hover{
     background-color: #4b4f51;
 }
-
+ */
 
 
 .placeholderImages{
@@ -103,6 +103,6 @@ body.dark-mode {
 }
 
 .toggle-button.active {
-    background: linear-gradient(115deg, #a0a0a0 0%, #626262 40%, #191919 100%);
+    background: linear-gradient(115deg, #9ec2ff 0%, #476aa5 50%, #071e5c 100%);
     color: white;
 }

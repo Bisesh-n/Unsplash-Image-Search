@@ -114,6 +114,7 @@
     color: #000000;
     background: rgb(255 255 255 / 50%);
     backdrop-filter: blur(2px);
+    box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 20%);
 }
 
 
@@ -155,6 +156,7 @@
     max-width: 100%;
     max-height: 90vh;
     object-fit: contain;
+    box-shadow: 1px 1px 10px 4px rgba(0, 0, 0, 35%);;
 }
 
 

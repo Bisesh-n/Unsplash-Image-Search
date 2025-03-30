@@ -103,7 +103,7 @@ const Main = () => {
                         onClick={() => toggleDarkMode(false)}
                         title="Light Mode"
                     >
-                        <i class="fal fa-lightbulb"></i>&nbsp;<span>Light</span>
+                        <i className="fal fa-lightbulb"></i>&nbsp;<span>Light</span>
                     </button>
 
                     <button 
@@ -180,7 +180,7 @@ const Main = () => {
                         <center>
                             <button
                                 type='button'
-                                className={darkMode ? 'showMore darkbtn' : 'showMore'}
+                                className='showMore'
                                 onClick={() => {
                                     setIsLoadingMore(true); // Start loading state
 
