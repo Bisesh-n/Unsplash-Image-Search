@@ -85,6 +85,10 @@ const ResultDisplay = (props) => {
                     <i className='fal fa-download'></i>
                 </button>
 
+                <button className='openImg-btn frostedGlass' title='Open Image' onClick={() => window.open(urls.full, '_blank')}>
+                    <i class="fal fa-external-link-square"></i>
+                </button>
+
                 <img src={urls.full} alt={alt_description} className='modal-image' />
 
 

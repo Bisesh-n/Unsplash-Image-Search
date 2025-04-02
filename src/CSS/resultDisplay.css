@@ -132,7 +132,8 @@
     bottom: 0;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: center;    
+    padding: 30px 10px 0;
 
     z-index: 1;
     background: rgb(45 45 45 / 40%);
@@ -153,56 +154,61 @@
 
 /* Image inside Modal */
 .modal-image {
-    max-width: 100%;
-    max-height: 90vh;
+    max-height: 92vh;
     object-fit: contain;
-    box-shadow: 1px 1px 10px 4px rgba(0, 0, 0, 35%);;
+    box-shadow: 1px 1px 20px 10px rgba(0, 0, 0, 40%);
 }
 
 
 
 /* modal Button Styles */
-.close-btn, .download-btn {
+.close-btn, .download-btn, .openImg-btn {
     position: absolute;
-    right: 10px;
-
+    top: -35px;
     border: none;
     border-radius: 50%;
-
     cursor: pointer;
     transition: 0.2s ease-in-out;
 
-    width: 40px; 
-    height: 40px;
+    width: 30px;
+    height: 30px;
     aspect-ratio: 1 / 1;
-    min-width: 40px;
-    min-height: 40px;
+    min-width: 30px;
+    min-height: 30px;
 }
 
-.close-btn:hover, .download-btn:hover {
+.close-btn:hover, .download-btn:hover, .openImg-btn:hover {
     background: rgb(255 255 255 / 60%);
 }
 
 
 /* Close Button Position */
 .close-btn {
-    top: 10px;
+    right: 0px;
 }
 
 /* Download Button Position */
 .download-btn {
-    top: 60px;
+    right: 45px;
+}
+/* Open Image Position */
+.openImg-btn {
+    right: 90px;
 }
 
 
 /* Ensure Icons Are Properly Centered */
-.close-btn i, .download-btn i {
+.close-btn i, .download-btn i, .openImg-btn i {
     font-size: 15px;
     line-height: 1;
 }
 
 
 
+.modal-content .resolution-overlay{
+    top: -30px;
+    left: 0;
+}
 .modal-content .title-overlay{
     bottom: 10px;
     opacity: 0;
